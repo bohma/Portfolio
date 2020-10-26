@@ -60,4 +60,10 @@ img {
 .sprite {
   display: none;
 }
+
+@media screen and (max-width: 767px) {
+  .title{
+    font-size: 28px;
+  }
+}
 </style>

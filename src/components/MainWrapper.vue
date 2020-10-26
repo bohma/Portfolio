@@ -4,24 +4,32 @@
       <div class="wrapper">
         <div class="nav">
           <img src="../assets/logo.png" alt="" class="nav__logo" />
-          <div class="nav__links">
-            <a href="#">Главная</a>
-            <a href="#">Об авторе</a>
-            <a href="#">Работы</a>
-            <a href="#">Процесс</a>
-            <a href="#">Контакты</a>
+          <div class="nav__links" :class="{ active: isActive }">
+            <a href="#" class="nav__links-link">Главная</a>
+            <a href="#" class="nav__links-link">Об авторе</a>
+            <a href="#" class="nav__links-link">Работы</a>
+            <a href="#" class="nav__links-link">Процесс</a>
+            <a href="#" class="nav__links-link">Контакты</a>
+          </div>
+          <div
+            class="nav__burger"
+            :class="{ active: isActive }"
+            @click="showBurger"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
+
         <div class="welcome__content">
           <img src="../assets/Frame.png" class="welcome__image" />
           <div class="welcome__info">
-            <div class="welcome__info-title">Разработка веб-приложений</div>
+            <div class="welcome__info-title">Web-Разработка</div>
             <div class="welcome__info-text description">
-              В отличие от вебсайтов, веб приложения созданы для взаимодействия
-              с пользователями. Веб приложения тоже могут быть
-              информативными,<br />
-              но они могут также и обрабатывать информацию, полученную от
-              пользователей.
+              Процедура создания WEB-приложения или WEB-сайта. Основными этапами
+              этого процесса являются такие мероприятия, как WEB-дизайн, вёрстка
+              страниц сайта, WEB-программирование на стороне сервера и клиента
             </div>
             <div class="welcome__info-button">
               <a href="#" class="btn">Написать мне</a>
@@ -58,7 +66,7 @@
               </div>
             </div>
             <div class="ability__item-info">
-              <div class="ability__item-info_title title">Landing Page</div>
+              <div class="ability__item-info_title">Landing Page</div>
               <div class="ability__item-info_text description">
                 Лендинг — это любая страница, которая призывает пользователя
                 что-то сделать. Например, подписаться на рассылку, купить билет
@@ -75,20 +83,22 @@
               </div>
             </div>
             <div class="ability__item-info">
-              <div class="ability__item-info_title title">
+              <div class="ability__item-info_title">
                 Single Page Application
               </div>
               <div class="ability__item-info_text description">
                 Single Page Application — это одностраничное веб-приложение.
                 Благодаря динамическому обновлению во время использования не
-                нужно перезагружать или подгружать дополнительные страницы. Это
-                означает, что вместо полной перезагрузки нужные элементы просто
-                подгружаются. Примеры динамических приложений: Gmail, Google
-                Maps, Facebok, Meduza.
+                нужно перезагружать или подгружать дополнительные страницы в
+                отличие от вебсайтов. Веб-приложения созданы для взаимодействия
+                с пользователями. Веб приложения тоже могут быть
+                информативными,<br />
+                но они могут также и обрабатывать информацию, полученную от
+                пользователей.
               </div>
             </div>
           </div>
-          <div class="ability__item show">
+          <div class="ability__item">
             <div class="ability__item-img">
               <div class="ability__item-img__desktop">
                 <svg viewBox="0 0 150 130">
@@ -191,7 +201,7 @@
     <div class="service">
       <div class="wrapper">
         <div class="service__content">
-          <div class="service__title title">Приложение или сайт?</div>
+          <div class="service__title">Приложение или сайт?</div>
           <div class="service__text description">
             Веб-сайт является источником информации, в то время как<br />
             веб-приложение работает в интерактивном режиме. Функции, задачи,
@@ -446,6 +456,16 @@
 <script>
 export default {
   name: "MainWrap",
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    showBurger() {
+      this.isActive = !this.isActive;
+    },
+  },
 };
 </script>
 
@@ -453,12 +473,11 @@ export default {
 .wrapper {
   max-width: 1140px;
   margin: 0 auto;
-  // border-left: 2px solid red;
-  // border-right: 2px solid red;
 }
 .welcome {
   background: #eeeff1;
   height: 100vh;
+  padding-bottom: 100px;
 
   .nav {
     display: flex;
@@ -483,6 +502,9 @@ export default {
       a:hover {
         color: #34547a;
       }
+      &__burger {
+        display: none;
+      }
     }
   }
   &__content {
@@ -501,6 +523,7 @@ export default {
       color: #000000;
       font-size: 40px;
       font-weight: 500;
+      text-transform: uppercase;
     }
     &-text {
       margin-bottom: 60px;
@@ -530,6 +553,8 @@ export default {
   &__skills {
     width: 100%;
     &-title {
+      font-weight: 500;
+      font-size: 32px;
       margin-bottom: 50px;
     }
     &-text {
@@ -565,6 +590,8 @@ export default {
   }
   &__title {
     text-align: center;
+    font-weight: 500;
+    font-size: 32px;
     margin-bottom: 100px;
   }
   &__item {
@@ -620,6 +647,8 @@ export default {
         margin-bottom: 30px;
         display: flex;
         align-items: flex-end;
+        font-size: 32px;
+        font-weight: 500;
       }
       &_text {
       }
@@ -630,6 +659,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   &__item {
+    display: block;
     width: 25%;
     position: relative;
     padding-bottom: 25%;
@@ -676,6 +706,8 @@ export default {
   }
   &__title {
     margin-bottom: 50px;
+    font-weight: 500;
+    font-size: 32px;
     text-transform: uppercase;
   }
   &__text {
@@ -747,6 +779,314 @@ export default {
         svg {
           fill: #558dfd;
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1440px) {
+  .wrapper {
+    max-width: 1024px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .wrapper {
+    max-width: 768px;
+  }
+  .nav {
+    &__links {
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+  .welcome {
+    padding-bottom: 50px;
+    &__content {
+      margin: 70px 0 0 70px;
+    }
+
+    &__image {
+      margin-right: 100px;
+    }
+    &__info {
+      &-title {
+        font-weight: 500;
+        font-size: 32px;
+      }
+      &-text {
+      }
+      &-button {
+        a {
+          padding: 20px 35px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  .about {
+    &__img {
+      width: 440px;
+    }
+  }
+  .wrapper {
+  }
+  .service {
+    &__content {
+      padding: 100px 95px;
+    }
+  }
+  .footer {
+    padding: 30px;
+
+    &__info {
+      &-name {
+        font-size: 16px;
+      }
+      &-rigths {
+        font-size: 12px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .wrapper {
+    width: 100%;
+    max-width: 425px;
+  }
+  .description {
+    font-size: 12px;
+  }
+
+  .welcome {
+    padding: 0;
+    &__content {
+      margin: 0px 20px 0;
+      display: block;
+      text-align: center;
+      position: relative;
+    }
+    .nav {
+      padding: 15px 30px 10px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 12;
+      background: #eeeff1;
+
+      &__logo {
+        width: 50px;
+      }
+      &__links {
+        display: block;
+        position: fixed;
+        width: auto;
+        z-index: 10;
+        right: -500px;
+        top: 77px;
+        overflow: hidden;
+        transition: 0.6s;
+        &.active {
+          right: 0;
+        }
+        &-link {
+          display: block;
+          border: 2px solid #042f70;
+          margin-top: 2px;
+          background: #eeeff1;
+        }
+      }
+      &__burger {
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        span {
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 4px;
+          background: #34547a;
+          border-radius: 5px;
+          transition: 0.3s;
+          &:nth-child(1) {
+            top: 7px;
+          }
+          &:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.2s;
+          }
+          &:nth-child(3) {
+            bottom: 7px;
+          }
+        }
+        &.active {
+          span {
+            &:nth-child(1) {
+              top: 50%;
+              transform: translateY(-50%) rotate(45deg);
+            }
+            &:nth-child(2) {
+              opacity: 0;
+            }
+            &:nth-child(3) {
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+            }
+          }
+        }
+      }
+    }
+    &__image {
+      width: 130px;
+      margin: 110px auto 20px;
+    }
+
+    &__info {
+      &-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      &-text {
+        margin-bottom: 30px;
+      }
+      &-button a {
+        padding: 12px 20px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .about {
+    &__content {
+      margin: 60px 20px 40px;
+      position: relative;
+    }
+    &__skills {
+      &-title {
+        margin-bottom: 40px;
+      }
+      &-text {
+        font-size: 15px;
+        &__skill {
+          margin-bottom: 40px;
+        }
+      }
+    }
+    &__img {
+      display: block;
+      position: absolute;
+      top: -25px;
+      right: 0;
+      border-radius: 100px;
+      width: 110px;
+    }
+  }
+  .ability {
+    &__content {
+      padding: 50px 20px 50px;
+    }
+
+    &__title {
+      margin-bottom: 40px;
+      display: flex;
+    }
+
+    &__item {
+      display: block;
+      align-items: center;
+      margin-bottom: 50px;
+      position: relative;
+
+      &-img {
+        position: absolute;
+        align-items: baseline;
+        top: 0;
+        right: 15px;
+        margin-left: 0;
+        &__landing-page {
+          width: 70px;
+        }
+        &__web-app {
+          width: 75px;
+        }
+        &__desktop {
+          height: 55px;
+        }
+        &__tablet {
+          opacity: 1;
+          height: 45px;
+          margin-left: 5px;
+        }
+        &__phone {
+          opacity: 1;
+          height: 35px;
+          margin-left: 5px;
+        }
+      }
+      &-info {
+        width: 100%;
+        &_title {
+          font-weight: 500;
+          font-size: 28px;
+          width: 55%;
+          margin-bottom: 35px;
+        }
+
+        &_text {
+        }
+      }
+      .title__note {
+        display: none;
+      }
+    }
+  }
+  .service {
+    &__content {
+      padding: 50px 20px;
+    }
+
+    &__title {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    input,
+    textarea {
+      font-size: 12px;
+    }
+    a {
+      padding: 14px 28px;
+      font-size: 12px;
+    }
+  }
+  .footer {
+    padding: 10px 20px;
+    &__content {
+    }
+
+    &__info {
+      align-items: center;
+      &-name {
+        font-size: 10px;
+        margin-top: 5px;
+      }
+
+      &-rigths {
+        margin-top: 4px;
+        font-size: 10px;
+      }
+    }
+
+    &__links {
+      &-link {
+        margin-left: 10px;
+        width: 20px;
       }
     }
   }
