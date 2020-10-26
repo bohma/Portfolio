@@ -939,7 +939,7 @@ export default {
     }
     &__image {
       width: 130px;
-      margin: 110px auto 20px;
+      margin: 140px auto 20px;
     }
 
     &__info {
