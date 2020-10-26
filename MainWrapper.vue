@@ -874,9 +874,7 @@ export default {
       background: #eeeff1;
 
       &__logo {
-        width: 100%;
-        max-width: 50px;
-        max-height: 50px;
+        width: 50px;
       }
       &__links {
         display: block;
@@ -941,7 +939,7 @@ export default {
     }
     &__image {
       width: 130px;
-      margin: 110px auto 20px;
+      margin: 140px auto 20px;
     }
 
     &__info {
