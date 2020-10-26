@@ -874,7 +874,7 @@ export default {
       background: #eeeff1;
 
       &__logo {
-        width: 50px;
+        height: 50px;
       }
       &__links {
         display: block;
