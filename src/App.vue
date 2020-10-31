@@ -21,13 +21,14 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 #app {
   font-family: "Roboto", sans-serif;
 }
 .title {
   font-weight: 500;
   font-size: 32px;
- 
+
   &__note {
     margin-left: 30px;
     transition: 1s;
@@ -38,7 +39,7 @@ export default {
 }
 .description {
   color: #727272;
-  &_black{
+  &_black {
     color: #000000;
   }
 }
@@ -60,9 +61,11 @@ img {
 .sprite {
   display: none;
 }
-
+.nav__burger {
+  display: none;
+}
 @media screen and (max-width: 767px) {
-  .title{
+  .title {
     font-size: 28px;
   }
 }

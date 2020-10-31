@@ -1,15 +1,56 @@
 <template>
   <div class="MainWrap">
-    <div class="welcome">
+    <div class="welcome" id="main">
       <div class="wrapper">
         <div class="nav">
           <img src="../assets/logo.png" alt="" class="nav__logo" />
           <div class="nav__links" :class="{ active: isActive }">
-            <a href="#" class="nav__links-link">Главная</a>
-            <a href="#" class="nav__links-link">Об авторе</a>
-            <a href="#" class="nav__links-link">Работы</a>
-            <a href="#" class="nav__links-link">Процесс</a>
-            <a href="#" class="nav__links-link">Контакты</a>
+            <a
+              href="#"
+              class="nav__links-link"
+              v-scroll-to="{ element: '#main', duration: 1500 }"
+              >Главная</a
+            >
+            <a
+              href="#"
+              class="nav__links-link"
+              v-scroll-to="{
+                element: '#about',
+                duration: 1500,
+                offset: widthScroll,
+              }"
+              >Об авторе</a
+            >
+            <a
+              href="#"
+              class="nav__links-link"
+              v-scroll-to="{
+                element: '#ability',
+                duration: 1500,
+                offset: widthScroll,
+              }"
+              >Процесс</a
+            >
+            <a
+              href="#"
+              class="nav__links-link"
+              v-scroll-to="{
+                element: '#works',
+                duration: 1500,
+                offset: widthScroll,
+              }"
+              >Работы</a
+            >
+            <a
+              href="#"
+              class="nav__links-link"
+              v-scroll-to="{
+                element: '#service',
+                duration: 1500,
+                offset: widthScroll,
+              }"
+              >Связаться</a
+            >
           </div>
           <div
             class="nav__burger"
@@ -32,13 +73,22 @@
               страниц сайта, WEB-программирование на стороне сервера и клиента
             </div>
             <div class="welcome__info-button">
-              <a href="#" class="btn">Написать мне</a>
+              <a
+                href="#"
+                class="btn"
+                v-scroll-to="{
+                  element: '#service',
+                  duration: 1500,
+                  offset: widthScroll,
+                }"
+                >Написать мне</a
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="about">
+    <div class="about" id="about">
       <div class="wrapper">
         <div class="about__content">
           <div class="about__skills">
@@ -53,7 +103,7 @@
         </div>
       </div>
     </div>
-    <div class="ability">
+    <div class="ability" id="ability">
       <div class="wrapper">
         <div class="ability__content">
           <div class="ability__title title">Какого рода проект вы хотите?</div>
@@ -132,7 +182,7 @@
         </div>
       </div>
     </div>
-    <div class="works">
+    <div class="works" id="works">
       <a class="works__item" href="#">
         <img src="../assets/example1.jpg" alt="" />
         <div class="works__item-choose">
@@ -198,7 +248,7 @@
         </div>
       </a>
     </div>
-    <div class="service">
+    <div class="service" id="service">
       <div class="wrapper">
         <div class="service__content">
           <div class="service__title">Приложение или сайт?</div>
@@ -245,17 +295,17 @@
             </div>
           </div>
           <div class="footer__links">
-            <a href="" class="footer__links-link">
+            <a href="https://t.me/Boh_ma" class="footer__links-link">
               <svg viewBox="0 0 512 512">
                 <use xlink:href="#telegram"></use>
               </svg>
             </a>
-            <a href="" class="footer__links-link">
+            <a href="https://github.com/bohma" class="footer__links-link">
               <svg viewBox="0 0 24 24">
                 <use xlink:href="#github"></use>
               </svg>
             </a>
-            <a href="" class="footer__links-link">
+            <a href="mailto:bohdan.mashtaler@gmail.com?subject=Вопрос по разработке веб-сайта." class="footer__links-link">
               <svg viewBox="0 0 1691 1407">
                 <use xlink:href="#mail"></use>
               </svg>
@@ -459,12 +509,28 @@ export default {
   data() {
     return {
       isActive: false,
+      widthScroll: 0,
+      width: 0,
     };
   },
   methods: {
     showBurger() {
       this.isActive = !this.isActive;
     },
+    updateWidth() {
+      this.width = window.innerWidth;
+      console.log(this.width);
+      if (this.width > 767) {
+        this.widthScroll = 0;
+      }
+      if (this.width <= 767) {
+        this.widthScroll = -74;
+      }
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.updateWidth);
+    this.updateWidth();
   },
 };
 </script>
@@ -544,10 +610,10 @@ export default {
   }
 }
 .about {
+  padding: 100px 0;
   &__content {
     display: flex;
     justify-content: space-between;
-    margin: 100px 0;
     align-items: center;
   }
   &__skills {
@@ -705,13 +771,13 @@ export default {
     text-align: center;
   }
   &__title {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-weight: 500;
     font-size: 32px;
     text-transform: uppercase;
   }
   &__text {
-    margin-bottom: 65px;
+    margin-bottom: 50px;
   }
   &__form {
     &-inputs {
@@ -739,7 +805,7 @@ export default {
       }
     }
     textarea {
-      height: 175px;
+      height: 130px;
       padding: 20px;
       resize: none;
       margin-bottom: 50px;
@@ -869,6 +935,7 @@ export default {
       padding: 15px 30px 10px 30px;
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       z-index: 12;
       background: #eeeff1;
@@ -958,6 +1025,7 @@ export default {
   }
 
   .about {
+    padding: 50px 0;
     &__content {
       margin: 60px 20px 40px;
       position: relative;
