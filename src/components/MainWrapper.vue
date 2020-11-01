@@ -522,7 +522,6 @@ export default {
     },
     updateWidth() {
       this.width = window.innerWidth;
-      console.log(this.width);
       if (this.width > 767) {
         this.widthScroll = 0;
       }
