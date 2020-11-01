@@ -106,7 +106,7 @@
     <div class="ability" id="ability">
       <div class="wrapper">
         <div class="ability__content">
-          <div class="ability__title title">Какого рода проект вы хотите?</div>
+          <div class="ability__title title">Какие задачи я решаю?</div>
           <div class="ability__item">
             <div class="ability__item-img">
               <div class="ability__item-img__landing-page">
@@ -305,7 +305,10 @@
                 <use xlink:href="#github"></use>
               </svg>
             </a>
-            <a href="mailto:bohdan.mashtaler@gmail.com?subject=Вопрос по разработке веб-сайта." class="footer__links-link">
+            <a
+              href="mailto:bohdan.mashtaler@gmail.com?subject=Вопрос по разработке веб-сайта."
+              class="footer__links-link"
+            >
               <svg viewBox="0 0 1691 1407">
                 <use xlink:href="#mail"></use>
               </svg>
@@ -840,6 +843,7 @@ export default {
       svg {
         width: 100%;
         fill: #ffffff;
+        transition: 0.4s;
       }
       &:hover {
         svg {
